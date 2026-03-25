@@ -22,5 +22,5 @@ strategy:
     stop_atr_mult: 1.0
 
 runtime:
-  save_reslts: true
+  save_results: true
   results_dir: "results"
