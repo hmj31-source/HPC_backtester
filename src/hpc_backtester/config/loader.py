@@ -2,16 +2,19 @@ from pathlib import Path
 import yaml
 
 from hpc_backtester.config.models import(
-    Appconfig,
+    AppConfig,
     BacktestConfig,
     StrategyConfig,
     RuntimeConfig,
 )
 
 def load_config(path: str | Path) -> AppConfig:
-    path = yaml.safe_load(f)
+    path = Path(path)
 
-    return Appconfig(
+    with path.open("r", encoding="Utf-8") as f:
+        raw = yaml.safe_load(f)
+
+    return AppConfig(
         project_name=raw["project"]["name"],
         backtest=BacktestConfig(**raw["backtest"]),
         strategy=StrategyConfig(**raw["strategy"]),
