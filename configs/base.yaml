@@ -3,7 +3,7 @@ project:
 
 backtest:
   initial_capital: 10000
-  commission_per_share: 0.005
+  commission_pershare: 0.005
   slippage_bps: 1.0
   timeframe: "1min"
   start_date: "2025-01-01"
