@@ -11,7 +11,7 @@ def load_sample_data(symbols: list[str]) -> pd.DataFrame:
 
     for symbol in symbols:
         base = 100.0 if symbol != "QQQ" else 500.0
-        for i, ts in enumerate(timestamps):
+        for i, ts in enumerate(timeStamps):
             rows.append(
                 {
                     "timestamp": ts,
