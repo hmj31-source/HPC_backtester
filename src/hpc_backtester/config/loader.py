@@ -17,6 +17,6 @@ def load_config(path: str | Path) -> AppConfig:
     return AppConfig(
         project_name=raw["project"]["name"],
         backtest=BacktestConfig(**raw["backtest"]),
-        strategy=StrategyConfig(**raw["strategy"]),
+        strategy=StrategyConfig(**raw["Strategy"]),
         runtime=RuntimeConfig(**raw["runtime"]),
     )
