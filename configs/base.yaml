@@ -1,0 +1,26 @@
+project:
+	name: "hpc_backtester"
+
+backtest:
+	initial_capital: 10000
+	commission_per_share: 0.005
+	slippage_bps: 1.0
+	timeframe: "1min"
+	start_date: "2025-01-01"
+	end_date: "2025-03-31"
+	symbols:
+		-SPY
+		-QQQ
+		-AAPL
+
+strategy:
+	name: "gap_fill"
+	params:
+		min_gap_pct: 0.02
+		entry_de;ay_min: 5
+		target_fill_pct: 0.5
+		stop_atr_mult: 1.0
+
+runtime:
+	save_reslts: true
+	results_dir: "results"
