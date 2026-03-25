@@ -25,5 +25,5 @@ class RuntimeConfig:
 class AppConfig:
     project_name: str
     backtest: BacktestConfig
-    Strategy: StrategyConfig
+    strategy: StrategyConfig
     runtime: RuntimeConfig
