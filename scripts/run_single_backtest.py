@@ -10,7 +10,7 @@ if str(SRC_PATH) not in sys.path:
     sys.path.insert(0, str(SRC_PATH))
 
 from hpc_backtester.config.loader import load_config
-from hpc_backtester.data.loader import load_sample_data
+from hpc_backtester.data.loader import load_ohlcv_csv
 from hpc_backtester.engine.simulator import run_backtest
 from hpc_backtester.storage.run_store import save_run_summary
 from hpc_backtester.strategies.registry import STRATEGY_REGISTRY
@@ -28,7 +28,12 @@ def main() -> None:
     config = load_config(args.config)
 
     logger.info("Loading data")
-    df = load_sample_data(config.backtest.symbols)
+    df = load_ohlcv_csv(
+        csv_path=config.backtest.data_path,
+        symbols=config.backtest.symbols,
+        start_date=config.backtest.start_date,
+        end_date=config.backtest.end_date,
+    )
 
     logger.info("Loading strategy: %s", config.strategy.name)
     strategy = STRATEGY_REGISTRY[config.strategy.name]
