@@ -98,6 +98,7 @@ PyYAML
 Status
 
 Early development (Day 1 complete). Core pipeline is functional; trading logic and analytics are in progress.
+
 ## Status Update
 
 ### Day 1
@@ -113,3 +114,10 @@ Early development (Day 1 complete). Core pipeline is functional; trading logic a
 - Added preprocessing for timestamp parsing, numeric conversion, and sorting
 - Added symbol and date filtering from config
 - Verified end-to-end execution using real file-based market data
+
+### Day 3
+- Expanded sample market data to multiple trading days
+- Implemented gap-fill feature engineering
+- Calculated previous close, session open, and gap percentage
+- Added long/short entry signal generation for gap-fill strategy
+- Logged signal previews for easier debugging and validation
