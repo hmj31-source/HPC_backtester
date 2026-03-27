@@ -98,3 +98,18 @@ PyYAML
 Status
 
 Early development (Day 1 complete). Core pipeline is functional; trading logic and analytics are in progress.
+## Status Update
+
+### Day 1
+- Set up project structure
+- Added YAML config loading
+- Created strategy abstraction and registry
+- Built placeholder backtest pipeline
+- Added JSON result saving
+
+### Day 2
+- Replaced synthetic data with real CSV-based OHLCV loading
+- Added schema validation for required market data columns
+- Added preprocessing for timestamp parsing, numeric conversion, and sorting
+- Added symbol and date filtering from config
+- Verified end-to-end execution using real file-based market data
