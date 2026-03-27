@@ -10,6 +10,7 @@ class BacktestConfig:
     start_date: str
     end_date: str
     symbols: list[str]
+    data_path: str
 
 @dataclass  
 class StrategyConfig:

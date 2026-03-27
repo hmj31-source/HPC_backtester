@@ -12,6 +12,7 @@ backtest:
     -SPY
     -QQQ
     -AAPL
+  data_path: "data/raw/saple_ohlc.scv"
 
 strategy:
   name: "gap_fill"
