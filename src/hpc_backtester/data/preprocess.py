@@ -20,4 +20,7 @@ def preprocess_ohlcv(df: pd.DataFrame) -> pd.DataFrame:
     # sort
     df = df.sort_values(["symbol", "timestamp"]).reset_index(drop=True)
 
+    df["trade_date"] = df["timestamp"].dt.date
+    df["time"] = df["timestamp"].dt.time
+
     return df

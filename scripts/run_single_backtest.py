@@ -41,6 +41,13 @@ def main() -> None:
     df = strategy.prepare_features(df)
     df = strategy.generate_entries(df, config.strategy.params)
 
+    signal_preview = df.loc[
+        df["entry_signal"],
+        ["timestamp", "symbol", "session_open", "prev_close", "gap_pct", "long_entry", "short_entry"]
+    ]
+    
+    logger.info("Signal preview:\n%s", signal_preview.to_string(index=False) if not signal_preview.empty else "No signals gemerated")
+
     results = run_backtest(df, config.backtest.initial_capital)
 
     if config.runtime.save_results:
