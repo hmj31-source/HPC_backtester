@@ -4,7 +4,7 @@ from typing import Any
 @dataclass
 class BacktestConfig:
     initial_capital: float 
-    commission_pershare: float
+    commission_per_share: float
     slippage_bps: float
     timeframe:str
     start_date: str

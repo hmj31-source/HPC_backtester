@@ -128,3 +128,10 @@ Early development (Day 1 complete). Core pipeline is functional; trading logic a
 - Added same-day end-of-day exits
 - Computed per-trade and aggregate PnL
 - Logged trade previews and summary performance metrics
+
+### Day 5
+- Added commission and slippage modeling
+- Computed gross and net PnL per trade
+- Added win rate and average trade PnL metrics
+- Exported trades to CSV for analysis
+- Improved result reporting with summary statistics

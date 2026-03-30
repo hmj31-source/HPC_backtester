@@ -1,0 +1,10 @@
+{
+  "inital_capital": 10000.0,
+  "ending_capital": 9999.7,
+  "net_pnl": -0.3,
+  "num_trades": 3,
+  "win_rate": 33.33,
+  "avg_trade_pnl": -0.0984,
+  "gross_pnl": -0.2653,
+  "total_commission": 0.03
+}

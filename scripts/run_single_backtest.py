@@ -12,7 +12,7 @@ if str(SRC_PATH) not in sys.path:
 from hpc_backtester.config.loader import load_config
 from hpc_backtester.data.loader import load_ohlcv_csv
 from hpc_backtester.engine.simulator import run_backtest
-from hpc_backtester.storage.run_store import save_run_summary
+from hpc_backtester.storage.run_store import save_run_summary, save_trades, get_timestamp
 from hpc_backtester.strategies.registry import STRATEGY_REGISTRY
 from hpc_backtester.utils.logging import setup_logging
 
@@ -48,7 +48,13 @@ def main() -> None:
     
     logger.info("Signal preview:\n%s", signal_preview.to_string(index=False) if not signal_preview.empty else "No signals gemerated")
 
-    backtest_output = run_backtest(df, config.backtest.initial_capital)
+    backtest_output = run_backtest(
+        df = df,
+        initial_capital=config.backtest.initial_capital,
+        commission_per_share=config.backtest.commission_per_share,
+        slippage_bps=config.backtest.slippage_bps,
+    )
+
     results = backtest_output["summary"]
     trades_df = backtest_output["trades"]
 
@@ -58,8 +64,12 @@ def main() -> None:
         logger.info("No trades generated")
 
     if config.runtime.save_results:
-        out_path = save_run_summary(results, config.runtime.results_dir)
-        logger.info("Saved run summary to %s", out_path)
+        run_id = get_timestamp()
+        summary_path = save_run_summary(results, config.runtime.results_dir, run_id)
+        trades_path = save_trades(trades_df, config.runtime.results_dir, run_id)
+
+        logger.info("Saved run summary to %s", summary_path)
+        logger.info("Saved trades to %s", trades_path)
 
     logger.info("Finished successfully")
     logger.info("Results: %s", results)

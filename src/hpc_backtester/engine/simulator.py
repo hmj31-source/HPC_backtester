@@ -70,7 +70,7 @@ def run_backtest(df: pd.DataFrame, initial_capital: float, commission_per_share:
                 "gross_pnl": round(gross_pnl ,4),
                 "commission": round(total_commission, 4),
                 "net_pnl": round(net_pnl, 4),
-                "win": net_pnl,
+                "win": bool(net_pnl > 0),
             }
         )
 
@@ -94,7 +94,7 @@ def run_backtest(df: pd.DataFrame, initial_capital: float, commission_per_share:
         win_rate = float(trades_df["win"].mean()) * 100.0
         avg_trade_pnl = float(trades_df["net_pnl"].mean())
         results = {
-            "inital_capital": round(float(initial_capital), 2),
+            "initial_capital": round(float(initial_capital), 2),
             "ending_capital": round(float(capital), 2),
             "net_pnl": round(net_pnl_total, 2),
             "num_trades": int(len(trades_df)),

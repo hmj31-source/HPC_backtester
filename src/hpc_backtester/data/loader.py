@@ -37,8 +37,9 @@ def load_ohlcv_csv(
         df = df[df["timestamp"] >= pd.to_datetime(start_date)]
 
     if end_date:
-        df = df[df["timestamp"] <= pd.to_datetime(end_date)]
-
+        end_ts = pd.to_datetime(end_date) + pd.Timedelta(days=1)
+        df = df[df["timestamp"] < end_ts]
+        
     df = df.reset_index(drop=True)
 
     logger.info("Loaded %d cleaned OHLCV rows", len(df))
