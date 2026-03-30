@@ -135,3 +135,10 @@ Early development (Day 1 complete). Core pipeline is functional; trading logic a
 - Added win rate and average trade PnL metrics
 - Exported trades to CSV for analysis
 - Improved result reporting with summary statistics
+
+### Day 6
+- Added equity curve generation and CSV export
+- Computed average winner and average loser
+- Added expectancy and max drawdown metrics
+- Expanded summary reporting for strategy evaluation
+- Improved post-run analysis outputs
