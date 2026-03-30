@@ -121,3 +121,10 @@ Early development (Day 1 complete). Core pipeline is functional; trading logic a
 - Calculated previous close, session open, and gap percentage
 - Added long/short entry signal generation for gap-fill strategy
 - Logged signal previews for easier debugging and validation
+
+### Day 4
+- Implemented first real trade execution loop
+- Converted entry signals into simulated long/short trades
+- Added same-day end-of-day exits
+- Computed per-trade and aggregate PnL
+- Logged trade previews and summary performance metrics
