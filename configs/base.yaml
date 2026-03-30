@@ -6,8 +6,8 @@ backtest:
   commission_pershare: 0.005
   slippage_bps: 1.0
   timeframe: "1min"
-  start_date: "2025-01-01"
-  end_date: "2025-03-31"
+  start_date: "2025-01-02"
+  end_date: "2025-01-03"
   symbols: ["SPY", "QQQ", "AAPL"]
   data_path: "data/raw/sample_ohlc.csv"
 
