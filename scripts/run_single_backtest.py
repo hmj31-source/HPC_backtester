@@ -48,7 +48,14 @@ def main() -> None:
     
     logger.info("Signal preview:\n%s", signal_preview.to_string(index=False) if not signal_preview.empty else "No signals gemerated")
 
-    results = run_backtest(df, config.backtest.initial_capital)
+    backtest_output = run_backtest(df, config.backtest.initial_capital)
+    results = backtest_output["summary"]
+    trades_df = backtest_output["trades"]
+
+    if not trades_df.empty:
+        logger.info("trade preview:\n%s", trades_df.to_string(index=False))
+    else:
+        logger.info("No trades generated")
 
     if config.runtime.save_results:
         out_path = save_run_summary(results, config.runtime.results_dir)
