@@ -12,7 +12,12 @@ if str(SRC_PATH) not in sys.path:
 from hpc_backtester.config.loader import load_config
 from hpc_backtester.data.loader import load_ohlcv_csv
 from hpc_backtester.engine.simulator import run_backtest
-from hpc_backtester.storage.run_store import save_run_summary, save_trades, get_timestamp
+from hpc_backtester.storage.run_store import (
+    save_run_summary,
+    save_trades, 
+    get_timestamp,
+    save_equity_curve,
+)
 from hpc_backtester.strategies.registry import STRATEGY_REGISTRY
 from hpc_backtester.utils.logging import setup_logging
 
@@ -57,19 +62,25 @@ def main() -> None:
 
     results = backtest_output["summary"]
     trades_df = backtest_output["trades"]
+    equity_curve_df = backtest_output["equity_curve"]
 
     if not trades_df.empty:
         logger.info("trade preview:\n%s", trades_df.to_string(index=False))
     else:
         logger.info("No trades generated")
 
+    if not equity_curve_df.empty:
+        logger.info("Equity curve preview:\n%s", equity_curve_df.to_string(index=False))
+
     if config.runtime.save_results:
         run_id = get_timestamp()
         summary_path = save_run_summary(results, config.runtime.results_dir, run_id)
         trades_path = save_trades(trades_df, config.runtime.results_dir, run_id)
+        equity_path = save_equity_curve(equity_curve_df, config.runtime.results_dir, run_id)
 
         logger.info("Saved run summary to %s", summary_path)
         logger.info("Saved trades to %s", trades_path)
+        logger.info("Saved equity curve to %s", equity_path)
 
     logger.info("Finished successfully")
     logger.info("Results: %s", results)
