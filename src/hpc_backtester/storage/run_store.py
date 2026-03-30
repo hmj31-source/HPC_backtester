@@ -25,3 +25,12 @@ def save_trades(trades_df: pd.DataFrame, results_dir: str, run_id: str) -> Path:
     trades_df.to_csv(csv_path, index=False)
 
     return csv_path
+
+def save_equity_curve(equity_curve_df: pd.DataFrame, results_dir: str, run_id: str) -> Path:
+    out_dir = Path(results_dir)
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    csv_path = out_dir / f"equity_curve_{run_id}.csv"
+    equity_curve_df.to_csv(csv_path, index=False)
+
+    return csv_path
