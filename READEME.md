@@ -142,3 +142,10 @@ Early development (Day 1 complete). Core pipeline is functional; trading logic a
 - Added expectancy and max drawdown metrics
 - Expanded summary reporting for strategy evaluation
 - Improved post-run analysis outputs
+
+### Day 7
+- Added parameter sweep support for gap-fill strategy research
+- Built grid-based parameter generation for `min_gap_pct`
+- Ran multiple backtests automatically from a single config
+- Ranked sweep results by net PnL, win rate, and expectancy
+- Exported sweep summaries to CSV

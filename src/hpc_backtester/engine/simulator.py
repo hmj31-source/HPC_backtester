@@ -102,8 +102,8 @@ def run_backtest(
 
     if trades_df.empty:
         results = {
-            "inital_capital": float(initial_capital),
-            "ending_capital": float(initial_capital),
+            "initial_capital": round(float(initial_capital), 2),
+            "ending_capital": round(float(initial_capital), 2),
             "net_pnl": 0.0,
             "num_trades": 0,
             "win_rate": 0.0,
@@ -112,9 +112,9 @@ def run_backtest(
             "total_commission": 0.0,
             "avg_winner": 0.0,
             "avg_loser": 0.0,
-            "profit_factor": 0.0,
             "expectancy": 0.0,
             "max_drawdown": 0.0,
+            "profit_factor": 0.0,
         }
     else:
         winners = trades_df[trades_df["net_pnl"] > 0]
@@ -153,9 +153,10 @@ def run_backtest(
             "gross_pnl": round(gross_pnl_total, 4),
             "total_commission": round(commission_total, 4),
             "avg_winner": round(avg_winner, 4),
-            "avg_loser": round(avg_loser , 4),
-            "expectancy": round(expectancy , 4),
+            "avg_loser": round(avg_loser, 4),
+            "expectancy": round(expectancy, 4),
             "max_drawdown": round(max_drawdown, 4),
+            "profit_factor": round(profit_factor, 4),
         }
 
     logger.info("Completed backtest with %d trades", results["num_trades"])
