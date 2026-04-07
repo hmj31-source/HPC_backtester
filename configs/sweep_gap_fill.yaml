@@ -1,0 +1,32 @@
+project:
+  name: "hpc_backtester_gap_fill_sweep"
+
+backtest:
+  initial_capital: 10000
+  commission_per_share: 0.005
+  slippage_bps: 1.0
+  timeframe: "1min"
+  start_date: "2025-01-02"
+  end_date: "2025-01-03"
+  symbols:
+    - SPY
+    - QQQ
+    - AAPL
+  data_path: "data/raw/sample_ohlc.csv"
+
+strategy:
+  name: "gap_fill"
+  params:
+    min_gap_pct_values:
+      - 0.01
+      - 0.015
+      - 0.02
+      - 0.03
+      - 0.04
+    entry_delay_min: 5
+    target_fill_pct: 0.5
+    stop_atr_mult: 1.0
+
+runtime:
+  save_results: true
+  results_dir: "results"
