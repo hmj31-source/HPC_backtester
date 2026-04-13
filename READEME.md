@@ -155,3 +155,8 @@ Early development (Day 1 complete). Core pipeline is functional; trading logic a
 - Parallelized independent backtest jobs across multiple CPU workers
 - Preserved deterministic ranking and CSV result export
 - Extended the framework toward larger-scale HPC experimentation
+
+### Day 9
+- Added timing for the Parralel and Sequential run
+- For small dat this is actually slower
+- Lots of overhead
