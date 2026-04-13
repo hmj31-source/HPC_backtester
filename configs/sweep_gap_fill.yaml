@@ -25,7 +25,7 @@ strategy:
       - 0.03
       - 0.035
       - 0.04
-    entry_delay_min: 
+    entry_delay_min_values:
       - 1
       - 2
       - 5
