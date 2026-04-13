@@ -160,3 +160,9 @@ Early development (Day 1 complete). Core pipeline is functional; trading logic a
 - Added timing for the Parralel and Sequential run
 - For small dat this is actually slower
 - Lots of overhead
+
+### Day 10
+- Expanded parameter sweeps to multiple strategy inputs
+- Added result visualization with heatmap export
+- Saved benchmark summaries alongside ranked sweep results
+- Improved analysis workflow for comparing parameter sensitivity
