@@ -8,7 +8,7 @@ def build_gap_fill_param_space(strategy_params: dict) -> list[dict]:
             param_sets.append(
                 {
                     "min_gap_pct": float(min_gap_pct),
-                    "entry_delay_min": int(entry_delay_min),
+                    "entry_delay_min": int(entry_delay_min) ,
                     "target_fill_pct": strategy_params.get("target_fill_pct", 0.5),
                     "stop_atr_mult": strategy_params.get("stop_atr_mult", 1.0),
                 }

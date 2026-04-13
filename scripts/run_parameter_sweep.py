@@ -20,6 +20,7 @@ from hpc_backtester.search.parameter_space import build_gap_fill_param_space
 from hpc_backtester.search.grid import rank_results
 from hpc_backtester.storage.run_store import get_timestamp
 from hpc_backtester.utils.logging import setup_logging
+from hpc_backtester.visualization.heatmaps import save_net_pnl_heatmap
 
 
 def run_sweep_sequential(
@@ -68,7 +69,6 @@ def main() -> None:
     logger.info("Generated %d parameter sets", len(param_sets))
     logger.info("Running sweep with %d worker(s)", config.runtime.n_workers)
 
-    # Sequential benchmark
     seq_start = time.perf_counter()
     sequential_results = run_sweep_sequential(
         df=df,
@@ -80,7 +80,6 @@ def main() -> None:
     )
     seq_elapsed = time.perf_counter() - seq_start
 
-    # Parallel benchmark
     par_start = time.perf_counter()
     parallel_results = run_sweep_multiprocessing(
         df=df,
@@ -93,11 +92,9 @@ def main() -> None:
     )
     par_elapsed = time.perf_counter() - par_start
 
-    # Use parallel results as the main sweep output
     results_df = pd.DataFrame(parallel_results)
     ranked_df = rank_results(results_df)
 
-    # Verify sequential and parallel match
     sequential_df = pd.DataFrame(sequential_results)
     sequential_ranked_df = rank_results(sequential_df)
 
@@ -117,7 +114,7 @@ def main() -> None:
         "results_match": bool(same_shape and same_columns and same_values),
     }
 
-    logger.info("Sweep results:\n%s", ranked_df.to_string(index=False))
+    logger.info("Top sweep results:\n%s", ranked_df.head(10).to_string(index=False))
     logger.info("Benchmark summary: %s", benchmark_summary)
 
     if config.runtime.save_results:
@@ -127,14 +124,18 @@ def main() -> None:
 
         sweep_path = out_dir / f"sweep_gap_fill_{run_id}.csv"
         benchmark_path = out_dir / f"benchmark_gap_fill_{run_id}.json"
+        heatmap_path = out_dir / f"heatmap_gap_fill_{run_id}.png"
 
         ranked_df.to_csv(sweep_path, index=False)
 
         with benchmark_path.open("w", encoding="utf-8") as f:
             json.dump(benchmark_summary, f, indent=2)
 
+        save_net_pnl_heatmap(ranked_df, heatmap_path)
+
         logger.info("Saved sweep results to %s", sweep_path)
         logger.info("Saved benchmark summary to %s", benchmark_path)
+        logger.info("Saved heatmap to %s", heatmap_path)
 
     logger.info("Sweep complete")
 

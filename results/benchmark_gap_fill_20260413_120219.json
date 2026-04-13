@@ -1,0 +1,9 @@
+{
+  "strategy_name": "gap_fill",
+  "num_parameter_sets": 7,
+  "n_workers": 4,
+  "sequential_runtime_sec": 0.126252,
+  "parallel_runtime_sec": 0.834744,
+  "speedup_factor": 0.1512,
+  "results_match": true
+}
