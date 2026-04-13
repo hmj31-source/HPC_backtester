@@ -30,3 +30,4 @@ strategy:
 runtime:
   save_results: true
   results_dir: "results"
+  n_workers: 4

@@ -1,26 +1,31 @@
 from dataclasses import dataclass
 from typing import Any
 
+
 @dataclass
 class BacktestConfig:
-    initial_capital: float 
+    initial_capital: float
     commission_per_share: float
     slippage_bps: float
-    timeframe:str
+    timeframe: str
     start_date: str
     end_date: str
     symbols: list[str]
     data_path: str
 
-@dataclass  
+
+@dataclass
 class StrategyConfig:
     name: str
-    params: dict[str, any]
+    params: dict[str, Any]
 
-@dataclass  
+
+@dataclass
 class RuntimeConfig:
     save_results: bool
     results_dir: str
+    n_workers: int = 1
+
 
 @dataclass
 class AppConfig:

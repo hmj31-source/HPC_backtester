@@ -6,12 +6,14 @@ import pandas as pd
 from hpc_backtester.engine.simulator import run_backtest
 from hpc_backtester.strategies.registry import STRATEGY_REGISTRY
 
+
 def run_single_sweep_job(
-        df: pd.DataFrame,
-        strategy_name: str,
-        params: dict[str, Any],
-        initial_capital: float,
-        slippage_bps: float,
+    df: pd.DataFrame,
+    strategy_name: str,
+    params: dict[str, Any],
+    initial_capital: float,
+    commission_per_share: float,
+    slippage_bps: float,
 ) -> dict[str, Any]:
     strategy = STRATEGY_REGISTRY[strategy_name]
 
@@ -19,10 +21,10 @@ def run_single_sweep_job(
     run_df = strategy.prepare_features(run_df)
     run_df = strategy.generate_entries(run_df, params)
 
-    backest_output = run_backtest(
+    backtest_output = run_backtest(
         df=run_df,
         initial_capital=initial_capital,
-        commission_per_share = commission_per_share, 
+        commission_per_share=commission_per_share,
         slippage_bps=slippage_bps,
     )
 
