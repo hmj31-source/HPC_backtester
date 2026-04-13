@@ -1,0 +1,6 @@
+initial_capital,ending_capital,net_pnl,num_trades,win_rate,avg_trade_pnl,gross_pnl,total_commission,avg_winner,avg_loser,expectancy,max_drawdown,profit_factor,strategy_name,min_gap_pct,entry_delay_min,target_fill_pct,stop_atr_mult
+10000.0,9999.7,-0.3,3,33.33,-0.0984,-0.2653,0.03,0.3707,-0.666,-0.3204,-0.663,0.5566,gap_fill,0.01,5,0.5,1.0
+10000.0,9999.7,-0.3,3,33.33,-0.0984,-0.2653,0.03,0.3707,-0.666,-0.3204,-0.663,0.5566,gap_fill,0.015,5,0.5,1.0
+10000.0,9999.7,-0.3,3,33.33,-0.0984,-0.2653,0.03,0.3707,-0.666,-0.3204,-0.663,0.5566,gap_fill,0.02,5,0.5,1.0
+10000.0,10000.0,0.0,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,gap_fill,0.03,5,0.5,1.0
+10000.0,10000.0,0.0,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,gap_fill,0.04,5,0.5,1.0
