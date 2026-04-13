@@ -149,3 +149,9 @@ Early development (Day 1 complete). Core pipeline is functional; trading logic a
 - Ran multiple backtests automatically from a single config
 - Ranked sweep results by net PnL, win rate, and expectancy
 - Exported sweep summaries to CSV
+
+### Day 8
+- Added multiprocessing support for parameter sweeps
+- Parallelized independent backtest jobs across multiple CPU workers
+- Preserved deterministic ranking and CSV result export
+- Extended the framework toward larger-scale HPC experimentation

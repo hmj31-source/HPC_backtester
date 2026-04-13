@@ -42,8 +42,6 @@ def main() -> None:
     logger.info("Generated %d parameter sets", len(param_sets))
     logger.info("Running sweep with %d worker(s)", config.runtime.n_workers)
 
-    logger.info("Generated %d parameter sets", len(param_sets))
-
     all_results = run_sweep_multiprocessing(
         df = df,
         strategy_name = config.strategy.name,
