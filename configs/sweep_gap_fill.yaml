@@ -21,9 +21,15 @@ strategy:
       - 0.01
       - 0.015
       - 0.02
+      - 0.025
       - 0.03
+      - 0.035
       - 0.04
-    entry_delay_min: 5
+    entry_delay_min: 
+      - 1
+      - 2
+      - 5
+      - 10
     target_fill_pct: 0.5
     stop_atr_mult: 1.0
 
